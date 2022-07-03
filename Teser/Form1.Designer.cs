@@ -42,6 +42,11 @@
             this.TextBox = new System.Windows.Forms.RichTextBox();
             this.ImageDialog = new System.Windows.Forms.OpenFileDialog();
             this.PDFdialog = new System.Windows.Forms.OpenFileDialog();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.CreatWordDoc = new System.Windows.Forms.ToolStripButton();
+            this.базаДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.подключитьсяКБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.разорватьСоединениеСБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStripImage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -51,7 +56,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem,
+            this.базаДанныхToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(10, 3, 0, 3);
@@ -87,7 +93,9 @@
             this.toolStripImage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripSeparator1,
-            this.toolStripButton2});
+            this.toolStripButton2,
+            this.toolStripSeparator2,
+            this.CreatWordDoc});
             this.toolStripImage.Location = new System.Drawing.Point(0, 25);
             this.toolStripImage.Name = "toolStripImage";
             this.toolStripImage.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
@@ -167,6 +175,45 @@
             this.PDFdialog.FileName = "PDFdialog";
             this.PDFdialog.Filter = "PDF|*.pdf";
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // CreatWordDoc
+            // 
+            this.CreatWordDoc.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.CreatWordDoc.Image = ((System.Drawing.Image)(resources.GetObject("CreatWordDoc.Image")));
+            this.CreatWordDoc.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CreatWordDoc.Name = "CreatWordDoc";
+            this.CreatWordDoc.Size = new System.Drawing.Size(130, 22);
+            this.CreatWordDoc.Text = "Creat Word Document";
+            this.CreatWordDoc.ToolTipText = "Creat Word Doc";
+            this.CreatWordDoc.Click += new System.EventHandler(this.CreatWordDoc_Click);
+            // 
+            // базаДанныхToolStripMenuItem
+            // 
+            this.базаДанныхToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.подключитьсяКБДToolStripMenuItem,
+            this.разорватьСоединениеСБДToolStripMenuItem});
+            this.базаДанныхToolStripMenuItem.Name = "базаДанныхToolStripMenuItem";
+            this.базаДанныхToolStripMenuItem.Size = new System.Drawing.Size(87, 19);
+            this.базаДанныхToolStripMenuItem.Text = "База данных";
+            // 
+            // подключитьсяКБДToolStripMenuItem
+            // 
+            this.подключитьсяКБДToolStripMenuItem.Name = "подключитьсяКБДToolStripMenuItem";
+            this.подключитьсяКБДToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.подключитьсяКБДToolStripMenuItem.Text = "Подключиться к БД";
+            this.подключитьсяКБДToolStripMenuItem.Click += new System.EventHandler(this.подключитьсяКБДToolStripMenuItem_Click);
+            // 
+            // разорватьСоединениеСБДToolStripMenuItem
+            // 
+            this.разорватьСоединениеСБДToolStripMenuItem.Name = "разорватьСоединениеСБДToolStripMenuItem";
+            this.разорватьСоединениеСБДToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.разорватьСоединениеСБДToolStripMenuItem.Text = "Разорвать соединение с БД";
+            this.разорватьСоединениеСБДToolStripMenuItem.Click += new System.EventHandler(this.разорватьСоединениеСБДToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -206,6 +253,11 @@
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.OpenFileDialog PDFdialog;
         private System.Windows.Forms.ToolStripMenuItem открытьPDFфайлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton CreatWordDoc;
+        private System.Windows.Forms.ToolStripMenuItem базаДанныхToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem подключитьсяКБДToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem разорватьСоединениеСБДToolStripMenuItem;
     }
 }
 

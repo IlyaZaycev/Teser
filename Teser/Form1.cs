@@ -15,13 +15,21 @@ namespace Teser
         private string filePath = string.Empty;
         private string lang = "rus";
         private string pdfFilePath = string.Empty;
-
+        private DataBase db = new DataBase();
+        private bool connection = false;
         public Form1()
         {
             InitializeComponent();
-            DataBase db = new DataBase();
-            db.OpenConnection();
-            db.CloseConnection();
+        }
+
+        private void CheckConnection()
+        {
+            
+            if (!connection)
+            {
+                connection = true;
+                db.OpenConnection();
+            }
         }
 
         private void OpenFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -98,6 +106,23 @@ namespace Teser
             {
                 MessageBox.Show(exception.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void CreatWordDoc_Click(object sender, EventArgs e)
+        {
+            Words words = new Words();
+            words.CreateWord();
+        }
+
+        private void подключитьсяКБДToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckConnection();
+        }
+
+        private void разорватьСоединениеСБДToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(connection==true)
+                db.CloseConnection();
         }
     }
 }

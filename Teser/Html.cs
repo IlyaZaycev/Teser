@@ -20,8 +20,6 @@ namespace Teser
             string text = sr.ReadToEnd();
             text = text.Substring(text.IndexOf(l), l.Length + 10);
             text = text.Remove(0, l.Length);
-
-
             Console.WriteLine(text);
         }
     }
