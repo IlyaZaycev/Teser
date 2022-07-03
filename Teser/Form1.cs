@@ -17,19 +17,42 @@ namespace Teser
         private string pdfFilePath = string.Empty;
         private DataBase db = new DataBase();
         private bool connection = false;
+
+        #region param
+
+        private string obj = String.Empty;
+        private string cost = String.Empty;
+        private string kdNumber = string.Empty;
+        private string KDdateDetermenation = String.Empty;
+        private string tax = String.Empty;
+        private string dropTax = String.Empty;
+        private string dropTaxYear = String.Empty;
+        private string saving = String.Empty;
+        private string notes = String.Empty;
+
+        #endregion
+
         public Form1()
         {
             InitializeComponent();
+            //if (!connection)
+            //{
+            //    connection = true;
+            //    try
+            //    {
+            //        db.OpenConnection();
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        MessageBox.Show("Что-то плохое");
+            //        throw;
+            //    }
+            //}
         }
 
         private void CheckConnection()
         {
-            
-            if (!connection)
-            {
-                connection = true;
-                db.OpenConnection();
-            }
+            db.PostInfo(TextBox.Text);
         }
 
         private void OpenFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -121,8 +144,8 @@ namespace Teser
 
         private void разорватьСоединениеСБДToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(connection==true)
-                db.CloseConnection();
+            //if (connection == true)
+            db.CloseConnection();
         }
     }
 }

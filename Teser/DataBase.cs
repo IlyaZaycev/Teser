@@ -11,21 +11,29 @@ namespace Teser
 {
     public class DataBase
     {
-        private readonly SqlConnection sqlConnection =
+        public SqlConnection sqlConnection =
             new SqlConnection(
                 @"Data Source=(local);Initial Catalog=TestDB;Persist Security Info=True;User ID=sa;Password=sa");
+        public SqlCommand command = new SqlCommand();
+        public SqlDataAdapter adapter = new SqlDataAdapter();
 
-        private SqlCommand command = new SqlCommand();
+
+        public string obj = String.Empty;
+        public string cost = String.Empty;
+        public string kdNumber = string.Empty;
+        public string KDdateDetermenation = String.Empty;
+        public int taxYear = 20000;
+        public int dropTax = 550000;
+        public int dropTaxYear = 11000;
+        public int saving = 9000;
+        public string notes = "String.Empty";
 
         public void OpenConnection()
         {
             try
             {
-                if (sqlConnection.State == System.Data.ConnectionState.Closed)
-                {
-                    sqlConnection.Open();
-                    MessageBox.Show("Подключение выполнено успешно");
-                }
+                sqlConnection.Open();
+                MessageBox.Show("Подключение выполнено успешно");
             }
             catch (Exception exception)
             {
@@ -51,31 +59,29 @@ namespace Teser
             }
         }
 
-        public void PostInfo( /*string column*/)
+        public void PostInfo(string abc)
         {
-            List<string> listObject = new List<string>();
-            List<string> listKDcost = new List<string>();
-            List<string> listKDdateDetermenation = new List<string>();
-            List<string> listTaxPrecent = new List<string>();
-            List<string> listTaxYear = new List<string>();
-            List<string> listDropTax = new List<string>();
-            List<string> listDropTaxYear = new List<string>();
-            List<string> listSaving = new List<string>();
-            List<string> listSavingRetrospective = new List<string>();
-            List<string> listSavingPerspective = new List<string>();
-            List<string> listSavingPerspectiveTenYears = new List<string>();
-            List<string> listNotes = new List<string>();
-            string sqlExpression = "SELECT * FROM FinalTable";
             try
             {
-                OpenConnection();
-                command = new SqlCommand(sqlExpression);
+                var scanDoc = new ScanDoc();
+                obj = scanDoc.FindObject(abc);
+                kdNumber = scanDoc.FindKadNumber(abc);
+                cost = scanDoc.FindKadCost(abc);
+                KDdateDetermenation = scanDoc.FindKDdateDetermenation(kdNumber);
+                string sqlExpression =
+                    $"INSERT INTO testTable (id, object, KDcost, KDdateDetermenation, taxYear, dropTax, dropTaxYear, saving, notes) VALUES ('{1}','{obj}', '{cost}', '{KDdateDetermenation}', '{taxYear}', '{dropTax}', '{dropTaxYear}', '{saving}', '{notes}')";
+                sqlConnection.Open();
+                command = new SqlCommand(sqlExpression, sqlConnection);
+                command.ExecuteNonQuery();
+                sqlConnection.Close();
+                MessageBox.Show("Данные занесены в таблицу");
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                MessageBox.Show(e.ToString());
+                
             }
         }
     }
 }
+//
